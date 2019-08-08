@@ -70,11 +70,6 @@ Currently, the announcement service can provide the following functionalities.
 * Gathers minimal data from players (only a logic check of 0,1 every few minutes to check if player is active and +1 the count for the master server of amount of players active) and the players are completely secure from any form of exploit or security vulnerability due to the code for the user only being able to accept output in message string, thus no code outside a simply announcement message can be executed in the users machine, and their privacy remains secure, too.
 
 ## Links
-
-Even though this information can be found inside the project on machine-readable
-format like in a .json file, it's good to include a summary of most useful
-links to humans using your project. You can include links like:
-
 - Project homepage & Repository: https://github.com/faycalki/master-server-warband
 - Issue tracker: https://github.com/faycalki/master-server-warband/issues
   - In case of sensitive bugs like security vulnerabilities, please contact me as soon as possible.
