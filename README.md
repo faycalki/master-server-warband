@@ -1,7 +1,6 @@
-![Logo of the project](https://raw.githubusercontent.com/faycalki/Medieval_Conquests/master/sample-logo.png)
+![Logo](https://i.imgur.com/ibTMkw3.png)
 
 # Master Server (Warband mods)
-> Additional information or tagline
 
 First of a kind master server for the Mount & Blade: Warband game created with the goal of providing players with on-the-fly notifications regarding any announcements related to cooperative events, multplayer or the overhaul itself, even as they adventure during their campaign.
 
@@ -9,7 +8,7 @@ This requires a dedicated port-forwarded machine to function 24/7 in order to ha
 
 In addition, unlimited reach to players with no need to re-compile any form of code between messages, and an automated approach for gathering data from dedicated servers to output them to players.
 
-#Download
+# Download
 
 | Source | Link | Status |
 |---|---|---|
