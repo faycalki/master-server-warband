@@ -1,0 +1,44 @@
+
+
+		("notification_choice", 0, "You may check for Online Notifications for events here, or toggle the automatic check off/on altogether.",
+"none",
+	[],
+	[
+	
+			("check_for_game",
+		[
+			
+		],
+		"Check for event availability",
+		[
+		#Masterserver-Master server
+	   (display_log_message, "@Request to Master Server sent successfully!", 0x01DF3A),
+	   (call_script, "script_version_check"),  
+		], "."),
+	
+		("turn_on",
+		[
+			(eq, "$notify_official", 0)
+		],
+		"Toggle Online Notifications on.",
+		[
+		(assign, "$notify_official", 1)
+		], "."),
+
+		("turn_off",
+		[
+			(eq, "$notify_official", 1)
+		],
+		"Toggle Online Notifications off.",
+		[
+			(assign, "$notify_official", 0)
+		], "."),
+
+		("back_to_camp_menu",
+		[],
+		"Back to camp menu.",
+		[
+			(jump_to_menu, "mnu_camp")
+		], ".")
+	]
+	),

@@ -1,0 +1,95 @@
+	("game_start", #Insert this code within game_starts script.
+		[
+		(assign, "$started_game", 1),
+		(assign, "$notify_official", 1),
+		]),
+
+
+	("version_check",
+	[ 
+	#(eq, "$notify_official", 1),
+	#Masterserver-Master server
+	#(assign, reg0, version_number),
+	
+	
+	(str_store_string, s1, "@http://masterserver.ignorelist.com/mcnotify/mrv.txt"), #Ping server for notification
+	(send_message_to_url, s1),
+	
+	#(str_store_string, s2, "@http://18.184.29.34/mcnotify/filename.php?var1=1241241heythere"), #Add 1 to counter
+	#(send_message_to_url, s2),
+	#
+	#(str_store_string, s3, "@http://18.184.29.34/mcnotify/countplayers.php"), #Add 1 to counter
+	#(send_message_to_url, s3),
+	
+	#(display_log_message, "@Request to Master Server sent successfully!", 0x01DF3A),
+	]),
+	
+	
+	
+	
+			  #script_game_receive_url_response
+  #response format should be like this:
+  #  [a number or a string]|[another number or a string]|[yet another number or a string] ...
+  # here is an example response:
+  # 12|Player|100|another string|142|323542|34454|yet another string
+  # INPUT: arg1 = num_integers, arg2 = num_strings
+  # reg0, reg1, reg2, ... up to 128 registers contain the integer values
+  # s0, s1, s2, ... up to 128 strings contain the string values
+  ("game_receive_url_response", #Masterserver-Master server
+    [
+
+	
+      #here is an example usage
+      (store_script_param, ":num_integers", 1),
+      (store_script_param, ":num_strings", 2),
+	  
+	#(try_begin), #Start whole thing
+	#(neq, 0, reg1), #More than 0 players
+	#(le, 300, reg1), #Less than 300 players
+	  (try_begin),
+      (this_or_next|gt, ":num_integers", 1), #Numbers
+	  (gt, ":num_strings", 1), #Letters
+	  
+	  
+	  #Lets do some magical calculations
+	  (try_begin),
+	  (eq, "$started_game", 1),
+	  (str_store_faction_name, s10, reg2), #Faction 1 name
+	  (str_store_faction_name, s11, reg3), #Faction 2 name
+	  (try_end),
+	  #Faction end
+	  
+	  #Map calculations
+	 #strings: scn_1257_combat_swamp_0 to multi_scene_end string. ID_Scene: 442-514 (scn_manor is 515)
+	 (val_sub, reg0, 442),
+	 (val_add, reg0, 2246),
+	  (str_store_string, s12, reg0), #Store the map in a string
+	  #Maps
+	  
+	  
+
+	  #(display_message, "@An Official Co-Operative/Multiplayer event is currently live, feel free to join for a new multiplayer experience!", reg4),
+	  (display_message, "@{s2}", reg4),
+	  (display_message, "@{s1}", reg4),
+	  (display_message, "@Server name: {s0}^Map: {s12}", reg4),
+	  (try_begin),
+	  (eq, "$started_game", 1),
+	  (display_message, "@Players: {reg1}/200^{s10} VS {s11}", reg4),
+	  (else_try),
+	  (eq, "$started_game", 0),
+	  (display_message, "@Players: {reg1}/200", reg4),
+	  (try_end),
+	  #(display_message, "@Players: {reg1}/200", reg4),
+	  #(display_message, "@Allied faction: {s10}", reg5),
+	  #(display_message, "@Enemy faction: {s11}", reg6),
+	  
+	  #Here
+	  #
+	  #(display_message, "@Server name: {s0}^Map: {s12}", reg4),
+	  ##(display_message, "@Players: {reg1}/200^{s10} VS {s11}", reg5),
+	  #(display_message, "@Players: {reg1}/200", reg4),
+	  #(display_message, "@Allied faction: {s10}", reg5),
+	  #(display_message, "@Enemy faction: {s11}", reg6),
+	  #
+	  ##
+      (try_end),
