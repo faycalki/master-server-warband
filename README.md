@@ -1,4 +1,5 @@
 ![Logo](https://i.imgur.com/ibTMkw3.png)
+![Logo](https://steamuserimages-a.akamaihd.net/ugc/922554376113872741/D4311CBC7FEC298D5353C15791289E645CDD7E6F/)
 
 # Master Server (Warband mods)
 
